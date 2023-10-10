@@ -182,3 +182,49 @@ def game_dict():
             ]
         }
     }
+
+
+def get_team_name(game_data, team):
+    return game_data[team]["team_name"]
+
+def get_team_colors(game_data, team):
+    return game_data[team]["colors"]
+
+def get_players(game_data, team):
+    return game_data[team]["players"]
+
+def get_player_names(game_data, team):
+    players = get_players(game_data, team)
+    return [player["name"] for player in players]
+
+def get_player_numbers(game_data, team):
+    players = get_players(game_data, team)
+    return [player["number"] for player in players]
+
+def get_player_by_number(game_data, team, number):
+    players = get_players(game_data, team)
+    for player in players:
+        if player["number"] == number:
+            return player
+    return None
+
+def get_player_average_points(game_data, team, player_name):
+    players = get_players(game_data, team)
+    for player in players:
+        if player["name"] == player_name:
+            return player["points_per_game"]
+    return None
+
+def get_player_career_points(game_data, team, player_name):
+    players = get_players(game_data, team)
+    for player in players:
+        if player["name"] == player_name:
+            return player["career_points"]
+    return None
+
+def get_player_shoe_brand(game_data, team, player_name):
+    players = get_players(game_data, team)
+    for player in players:
+        if player["name"] == player_name:
+            return player["shoe_brand"]
+    return None
